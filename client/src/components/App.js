@@ -7,10 +7,12 @@ import UserGallery from './UserGallery';
 
 function App() {
 
+  const [cards,setCards]=([])
+
   useEffect(() => {
     fetch('https://api.nasa.gov/planetary/apod?api_key=ydiBQOFHq3jZVbsUXJBMHmZfnab2O2IQpSpAdnAF&start_date=2023-10-01&end_date=2023-11-01')
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => setCards(data));
   }, []);
 
   return (
@@ -22,7 +24,7 @@ function App() {
           <Home/>
         </Route>
         <Route exact path='/gallery'>
-          <Gallery/>
+          {cards.lengh>0 ? <Gallery cards={cards}/>: <h1>Loading...</h1>}
         </Route>
         <Route exact path='/login'>
           <Login/>
