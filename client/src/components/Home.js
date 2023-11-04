@@ -1,8 +1,23 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 
 function Home(){
 
-    return <div></div>
+    const [user,setUser]=('')
+
+    useEffect(() => {
+        // auto-login
+        fetch("/check_session").then((r) => {
+        if (r.ok) {
+            r.json().then((user) => setUser(user));
+        }
+        });
+    }, [])
+
+    return (
+        <div>
+
+        </div>
+    )
 }
 
 export default Home
