@@ -12,41 +12,40 @@ function Signup({setUser}){
         .oneOf([Yup.ref('password')], 'Password must match')
       })
 
-      const handleSubmit = (values) => {
-        fetch("/signup", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: values.username,
-            password: values.password,
-            password_confirmation: values.passwordConfirmation,
-          }),
-        })
-          .then((r) => {
-            if (r.ok) {
-              r.json().then((user) => setUser(user));
-            }
-          })
-          .catch((error) => {
-            // Handle errors here
-            console.error("Error:", error);
-          });
+    const handleSubmit = (values) => {
+      fetch("/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: values.username,
+          password: values.password,
+          password_confirmation: values.passwordConfirmation,
+        }),
+      })
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+          }
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("Error:", error);
+        });
       };
 
     return (
-    <>
-    <Formik
-          initialValues={{
-            username: '',
-            password: '',
-            passwordConfirmation: '',
-          }}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-    <Form>
+    <Formik 
+      initialValues={{
+        username: '',
+        password: '',
+        passwordConfirmation: '',
+      }}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
+      <Form>
         <div>
           <label htmlFor="username">User name:</label>
           <Field type="text" id="username" name="username"/>
@@ -70,7 +69,6 @@ function Signup({setUser}){
         </div>
       </Form>
     </Formik>
-    </>
     )
 }
 
