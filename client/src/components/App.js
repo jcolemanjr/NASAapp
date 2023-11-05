@@ -1,14 +1,15 @@
-
-import './App.css';
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from 'react-router-dom';
 import NavBar from './NavBar';
 import UserGallery from './UserGallery';
+import Home from "./Home";
+import Gallery from "./Gallery";
+import Login from "./Login";
 
 function App() {
 
-  const [cards,setCards]=([])
-  const [user,setUser]=(null)
+  const [cards,setCards]=useState([])
+  const [user,setUser]=useState(null)
 
   useEffect(() => {
     fetch('https://api.nasa.gov/planetary/apod?api_key=ydiBQOFHq3jZVbsUXJBMHmZfnab2O2IQpSpAdnAF&start_date=2023-10-01&end_date=2023-11-01')

@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from "react";
 import Cards from "./Cards";
+import Search from "./Search";
 
 function UserGallery(){
-    const [user, setUser] = useState(null);
     const [cards,setCards]=useState([])
+    const [search,setSearch]=useState('')
     
     useEffect(() => {
         fetch("")
@@ -11,11 +12,24 @@ function UserGallery(){
         .then((data) => setCards(data));
       }, [])
 
-    return (
-        <>
-        {cards>0 ? <Cards cards={cards}/>: <h1>Loading...</h1>}
-        </>
-    )
+    if (cards >0){
+        filteredUserCards = cards.filter(card=>{
+            card.title.toLowerCase().includes(search.toLowerCase())
+        })
+
+        return (
+            <>
+            <Search setanotherSearch={setSearch}/>
+            <Cards cards={filteredUserCards}/>
+            </>
+        )
+    }
+
+    else{
+        return(
+            <h1>Loading...</h1>
+        )
+    }
 }
 
 export default UserGallery
