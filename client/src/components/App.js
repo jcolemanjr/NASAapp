@@ -39,7 +39,7 @@ function App() {
           <Login/>
         </Route>
         <Route exact path='/usergallery'>
-        {user?<UserGallery />:<h1>For see this content login or signup</h1> }
+        {user?<UserGallery user={user}/>:<h1>For see this content login or signup</h1> }
         </Route>
       </Switch>
     </div>
