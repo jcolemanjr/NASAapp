@@ -14,7 +14,7 @@ function UserGallery({user}){
 
     if (cards >0){
         const filteredUserCards = cards.filter(card=>{
-            card.title.toLowerCase().includes(search.toLowerCase())
+            return card.title.toLowerCase().includes(search.toLowerCase())
         })
 
         return (
