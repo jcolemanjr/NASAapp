@@ -26,8 +26,6 @@
 
 
 # App:
-Imports: The component imports various modules and components, including React, useState, useEffect from React, and components like NavBar, UserGallery, Home, Gallery, and Login. Additionally, it imports the Route and Switch components from react-router-dom for handling routing.
-
 The component uses the useState hook to manage two state variables: cards and user. These states are used to store data fetched from NASA's API and user data, respectively.
 
 Inside the useEffect hook, there are two fetch requests. The first fetches data from NASA's API to get pictures of the day within a specified date range. The fetched data is stored in the cards state.
