@@ -4,14 +4,15 @@ from models import User, UserMedia, Media
 
 @app.route('/signup', methods=['POST'])
 def create_account():
-    json = request.get_json()
-    user = User(
-        username=json['username'],
-        password_hash=json['password']
-    )
-    db.session.add(user)
-    db.session.commit()
-    return make_response(user.to_dict(), 201)
+    if request.method == 'POST':
+        json = request.get_json()
+        user = User(
+            username=json['username'],
+            password_hash=json['password']
+        )
+        db.session.add(user)
+        db.session.commit()
+        return make_response(user.to_dict(), 201)
 
 @app.route('/check_session')
 def check_account():
