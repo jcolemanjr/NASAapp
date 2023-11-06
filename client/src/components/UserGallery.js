@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import Cards from "./Cards";
 import Search from "./Search";
 
-function UserGallery(){
+function UserGallery({user}){
     const [cards,setCards]=useState([])
     const [search,setSearch]=useState('')
     
