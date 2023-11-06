@@ -7,13 +7,13 @@ function UserGallery({user}){
     const [search,setSearch]=useState('')
     
     useEffect(() => {
-        fetch("")
+        fetch("http://127.0.0.1:5555/media/1")
         .then((res) => res.json())
         .then((data) => setCards(data));
       }, [])
 
     if (cards >0){
-        filteredUserCards = cards.filter(card=>{
+        const filteredUserCards = cards.filter(card=>{
             card.title.toLowerCase().includes(search.toLowerCase())
         })
 
