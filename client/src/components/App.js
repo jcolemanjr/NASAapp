@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import UserGallery from './UserGallery';
 import Home from "./Home";
 import Gallery from "./Gallery";
-import Login from "./Login";
+import Login from "./Login_Logout";
 
 function App() {
 
@@ -42,7 +42,7 @@ function App() {
           {cards.lengh>0 ? <Gallery cards={cards}/>: <h1>Loading...</h1>}
         </Route>
         <Route exact path='/login'>
-          <Login/>
+          <Login setUser={setUser} user={user}/>
         </Route>
         <Route exact path='/usergallery'>
         {user?<UserGallery user={user}/>:<h1>For see this content login or signup</h1> }

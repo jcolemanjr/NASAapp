@@ -136,17 +136,17 @@ def change_password():
 
 @app.route('/media', methods=['GET'])
 def media_gallery():
-    response = requests.get('https://api.nasa.gov/planetary/apod?api_key=YOUR_API_KEY')
-    if response.status_code == 200:
+    medias = Media.query.all()
+    if medias:
+        media_dict=[media.to_dict() for media in medias]
         response = make_response(
-            response.json(),
+            media_dict,
             200
         )
         return response
     else:
         response = make_response(
-            {'error': 'Failed to fetch media from NASA APOD'},
-            response.status_code
+            {'error': 'Failed to fetch media from NASA APOD'},404
         )
         return response
 
@@ -163,7 +163,7 @@ def personal_gallery():
     user_medias = UserMedia.query.filter_by(user_id=user_id).all()
     media_list = [user_media.media.to_dict() for user_media in user_medias]
     response = make_response(
-        jsonify(media_list),
+        media_list,
         200
     )
     return response
@@ -215,6 +215,13 @@ def delete_media(media_id):
         404
     )
     return response
+
+@app.route('/check_session', methods=['GET'])
+def check_account():
+    user = User.query.filter(User.id == session.get('user_id')).first()
+    if user:
+        user_data = user.to_dict()
+        return make_response(user_data,204)
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

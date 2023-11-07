@@ -1,13 +1,13 @@
 import React,{useState, useEffect} from "react";
-import Cards from "./Cards";
 import Search from "./Search";
+import UserCard from "./UserCard";
 
 function UserGallery({user}){
     const [cards,setCards]=useState([])
     const [search,setSearch]=useState('')
     
     useEffect(() => {
-        fetch("http://127.0.0.1:5555/media/1")
+        fetch("/personal_gallery")
         .then((res) => res.json())
         .then((data) => setCards(data));
       }, [])
@@ -17,10 +17,15 @@ function UserGallery({user}){
             return card.title.toLowerCase().includes(search.toLowerCase())
         })
 
+        function onhandleDelete(id){
+            const deletedcard = filteredUserCards.filter(card => card.id !== id)
+            setCards(deletedcard)
+        }
+
         return (
             <>
             <Search setanotherSearch={setSearch}/>
-            <Cards cards={filteredUserCards}/>
+            <UserCard cards={filteredUserCards} onhandleDelete={onhandleDelete}/>
             </>
         )
     }
