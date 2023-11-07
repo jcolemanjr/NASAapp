@@ -33,6 +33,7 @@ class Media(db.Model, SerializerMixin):
     url = db.Column(db.String, nullable=True)
     hd_url = db.Column(db.String, nullable=True)
 
+
     user_medias = db.relationship('UserMedia', back_populates='media', cascade='all, delete-orphan')
 
     serialize_rules = ('-user_media.media', )
