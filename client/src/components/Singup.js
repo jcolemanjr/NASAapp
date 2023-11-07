@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-function Signup({setUser}){
+function Signup({setUser,user}){
+
+  const[click,setclick] = useState(false)
     
     const validationSchema = Yup.object({
         username: Yup.string().required('Name is required'),
@@ -11,6 +13,19 @@ function Signup({setUser}){
         passwordConfirmation: Yup.string().required('Password confirmation is required')
         .oneOf([Yup.ref('password')], 'Password must match')
       })
+
+      function handleDeleteAccount(e){
+        fetch('/delete_account',{ method:'DELETE'})
+        .then((r) => {
+          if (r.ok) {
+            setUser(null);
+          }
+        })
+      }
+
+      function handleClick(e){
+        setclick(!click)
+      }
 
     const handleSubmit = (values) => {
       fetch("/signup", {
@@ -66,6 +81,9 @@ function Signup({setUser}){
         
         <div>
           <button type="submit">Submit</button>
+          <button onClick={handleDeleteAccount}>Delete Account</button>
+          <button onClick={handleClick}></button>
+          {click? <ChangePassword setUser={setUser}/>: null }
         </div>
       </Form>
     </Formik>

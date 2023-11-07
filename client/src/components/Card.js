@@ -1,6 +1,19 @@
 import React from "react";
 
-function Card({title, date, explanation, copyright, media_type, url, hd_url}){
+function Card({id,title, date, explanation, copyright, media_type, url, hd_url}){
+
+    function handleClick(e){
+        fetch('/save_media',{
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id 
+            }),
+          })
+        .then(resp => resp.json())
+    }
 
     const cardInfo = <div>
         <h3>Title</h3>
@@ -23,6 +36,7 @@ function Card({title, date, explanation, copyright, media_type, url, hd_url}){
     <div>
         <img src={hd_url} alt={title} />
         {cardInfo}
+        <button onClick={handleClick} >Add to favorite </button>
     </div>
     ) 
 }

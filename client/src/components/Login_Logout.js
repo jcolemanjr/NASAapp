@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Signup from "./Singup";
 
-function Login({setUser}){
+function Login({setUser,user}){
 
   const validationSchema = Yup.object({
     username: Yup.string().required('Name is required'),
@@ -67,7 +67,7 @@ function Login({setUser}){
 
     return (
       <div className="login-signup">
-        {signup ? login : <Signup setUser={setUser}/>}
+        {signup ? login : <Signup setUser={setUser} user={user}/>}
         <button onClick={handletoggle}>{signup ? "Signup" : "Login"}</button>
       </div>
       
