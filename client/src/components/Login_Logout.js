@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Signup from "./Singup";
 
-function Login({setUser,user}){
+function Login({ setUser, user }) {
+  const history = useHistory();
 
   const validationSchema = Yup.object({
     username: Yup.string().required('Name is required'),
@@ -30,14 +32,22 @@ function Login({setUser,user}){
     })
       .then((r) => {
         if (r.ok) {
-          r.json().then((user) => setUser(user))
+          r.json().then((data) => {
+            setUser(data.user);
+            // Redirect to the user gallery upon successful login
+            history.push("/Gallery");
+          });
+        } else {
+          // Handle the case where login is not successful
+          alert("Invalid username or password");
         }
       })
       .catch((error) => {
         // Handle errors here
-        console.error("Error:", error)
-      })
-  }
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      });
+  };
       
     
   const login = <div className="form">
@@ -72,7 +82,7 @@ function Login({setUser,user}){
       </div>
       
     )
- 
+
 }
 
 export default Login 

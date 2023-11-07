@@ -52,7 +52,7 @@ def login():
     if user and user.check_password(password):
         session['user_id'] = user.id
         response = make_response(
-            user.to_dict(),
+            {'message': 'Login successful', 'user': user.to_dict()},
             200
         )
         return response
