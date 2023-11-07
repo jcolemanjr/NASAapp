@@ -5,6 +5,8 @@ import Cards from "./Cards";
 function Gallery({cards}){
 
     const [search,setSearch]=useState('')
+
+   
     
     const filtered = cards.filter( card => {
        return card.title.toLowerCase().includes(search.toLowerCase())

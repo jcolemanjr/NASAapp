@@ -11,10 +11,16 @@ function App() {
   const [cards,setCards]=useState([])
   const [user,setUser]=useState(null)
 
-  useEffect(() => {
-    fetch('https://api.nasa.gov/planetary/apod?api_key=ydiBQOFHq3jZVbsUXJBMHmZfnab2O2IQpSpAdnAF&start_date=2023-10-01&end_date=2023-11-01')
-    .then((res) => res.json())
-    .then((data) => setCards(data));
+  // useEffect(() => {
+  //   fetch('https://api.nasa.gov/planetary/apod?api_key=ydiBQOFHq3jZVbsUXJBMHmZfnab2O2IQpSpAdnAF&start_date=2023-10-01&end_date=2023-11-01')
+  //   .then((res) => res.json())
+  //   .then((data) => setCards(data));
+
+    useEffect(() => {
+      fetch("/media")
+        .then((res) => res.json())
+        .then((data) => setCards(data));
+    
 
     fetch("/check_session").then((r) => {
       if (r.ok) {
