@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import ChangePassword from './ChangePassword';
 
 function Signup({setUser,user}){
 
