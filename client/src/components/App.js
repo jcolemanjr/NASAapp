@@ -22,34 +22,71 @@ function App() {
         .then((data) => setCards(data));
     
 
-    fetch("/check_session").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    })
-  },[])
+  //   fetch("/check_session").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //     }
+  //   })
+    },[])
 
 
-  return (
-    <div className="App">
-      <header className="App-header"></header>
-      <NavBar/>
-      <Switch>
-        <Route exact path='/'>
-          <Home/>
-        </Route>
-        <Route exact path='/gallery'>
-          {cards.lengh>0 ? <Gallery cards={cards}/>: <h1>Loading...</h1>}
-        </Route>
-        <Route exact path='/login'>
-          <Login setUser={setUser} user={user}/>
-        </Route>
-        <Route exact path='/usergallery'>
-        {user?<UserGallery user={user}/>:<h1>For see this content login or signup</h1> }
-        </Route>
-      </Switch>
-    </div>
-  );
-}
-
-export default App;
+    const containerStyle = {
+      border: '1px solid #ddd',
+      borderRadius: '5px',
+      padding: '10px',
+      margin: '10px',
+      width: '30%',
+    };
+  
+    const imageStyle = {
+      maxWidth: '100%',
+      height: 'auto',
+    };
+  
+    const titleStyle = {
+      fontSize: '18px',
+      marginBottom: '5px',
+    };
+  
+    const explanationStyle = {
+      fontSize: '14px',
+    };
+  
+    return (
+      <div className="App">
+        <header className="App-header"></header>
+        <NavBar/>
+        <Switch>
+          <Route exact path='/'>
+            <Home/>
+          </Route>
+          <Route exact path='/gallery'>
+            {cards.length > 0 ? (
+              <div>
+                <h1>Gallery</h1>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                  {cards.map((card, index) => (
+                    <div key={index} style={containerStyle}>
+                      <h2 style={titleStyle}>{card.title}</h2>
+                      <p style={explanationStyle}>{card.explanation}</p>
+                      <img src={card.url} alt={card.title} style={imageStyle} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <h1>Loading...</h1>
+            )}
+          </Route>
+          <Route exact path='/login'>
+            <Login setUser={setUser} user={user}/>
+          </Route>
+          <Route exact path='/usergallery'>
+            {user ? <UserGallery user={user}/> : <h1>To see this content, please log in or sign up</h1>}
+          </Route>
+        </Switch>
+      </div>
+    );
+  }
+  
+  export default App;

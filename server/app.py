@@ -222,6 +222,12 @@ def check_account():
     if user:
         user_data = user.to_dict()
         return make_response(user_data,204)
+    else:
+        response = make_response(
+        {not "account" : None },
+        404
+    )
+    return response
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
