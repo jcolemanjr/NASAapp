@@ -216,18 +216,39 @@ def delete_media(media_id):
     )
     return response
 
+# @app.route('/check_session', methods=['GET'])
+# def check_account():
+#     user = User.query.filter(User.id == session.get('user_id')).first()
+#     if user:
+#         user_data = user.to_dict()
+#         return make_response(user_data,204)
+#     else:
+#         response = make_response(
+#         { " not account" : None },
+#         404
+#     )
+#     return response
+
 @app.route('/check_session', methods=['GET'])
 def check_account():
-    user = User.query.filter(User.id == session.get('user_id')).first()
-    if user:
-        user_data = user.to_dict()
-        return make_response(user_data,204)
+    user_id = session.get('user_id')
+    if user_id:
+        user = User.query.get(user_id)
+        if user:
+            user_data = user.to_dict()
+            return make_response(user_data, 200)
+        else:
+            response = make_response(
+                {'error': 'User not found'},
+                404
+            )
+            return response
     else:
         response = make_response(
-        {not "account" : None },
-        404
-    )
-    return response
+            {'error': 'No user session found'},
+            404
+        )
+        return response
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
