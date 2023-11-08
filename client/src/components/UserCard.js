@@ -25,13 +25,13 @@ function UserCard({id,title, date, explanation, copyright, media_type, url, hd_u
 
         <h3>Media Type</h3>
         <p>{media_type}</p>
+        <button onClick={()=>handleDelete(id)} >Delete </button>
     </div>
 
     return (
         <div>
         <img src={hd_url} alt={title} />
         {cardInfo}
-        <button onClick={()=>handleDelete(id)} >Delete </button>
         </div>
     )
 }

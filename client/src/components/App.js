@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import UserGallery from './UserGallery';
 import Home from "./Home";
 import Gallery from "./Gallery";
-import Login from "./Login_Logout";
+import LoginLogout from "./LoginLogout";
 
 function App() {
 
@@ -80,7 +80,7 @@ function App() {
             )}
           </Route>
           <Route exact path='/login'>
-            <Login setUser={setUser} user={user}/>
+            <LoginLogout setUser={setUser} user={user}/>
           </Route>
           <Route exact path='/usergallery'>
             {user ? <UserGallery setUser={setUser}/> : <h1>To see this content, please log in or sign up</h1>}

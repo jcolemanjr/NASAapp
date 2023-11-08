@@ -1,19 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import { useHistory } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Signup from "./Singup";
 
-function Login({ setUser, user }) {
+function LoginLogout({ setUser, user }) {
   const history = useHistory();
 
   const validationSchema = Yup.object({
     username: Yup.string().required('Name is required'),
-    password: Yup.string().required('Password is required').
-    min(8, 'Password must be at least 8 characters long')
+    password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters long')
   })
 
-  const[signup,setsignup]=useState(false)
+  const[signup,setsignup]=useState(true)
 
   function handletoggle(e){
     setsignup(!signup)
@@ -85,4 +84,4 @@ function Login({ setUser, user }) {
 
 }
 
-export default Login 
+export default LoginLogout 
