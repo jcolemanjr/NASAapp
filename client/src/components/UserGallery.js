@@ -42,7 +42,7 @@ function UserGallery({setUser}){
     // })        
     // }, [])
 
-    if (cards >0){
+    if (cards.length >0){
         const filteredUserCards = cards.filter(card=>{
             return card.title.toLowerCase().includes(search.toLowerCase())
         })
