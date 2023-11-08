@@ -52,10 +52,13 @@ function UserGallery({setUser}){
             setCards(deletedcard)
         }
 
+        const mappedCard = filteredUserCards.map(card => (<UserCard key={card.id} id={card.id} title={card.title} date={card.date} explanation={card.explanation} copyright={card.copyright} media_type={card.media_type} url={card.url} hd_url={card.hd_url} onhandleDelete={onhandleDelete}/>))
+
         return (
             <>
             <Search setanotherSearch={setSearch}/>
-            <UserCard cards={filteredUserCards} onhandleDelete={onhandleDelete}/>
+            {/* <UserCard cards={filteredUserCards} /> */}
+            {mappedCard}
             </>
         )
     }
