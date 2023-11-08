@@ -64,6 +64,7 @@ function App() {
             {cards.length > 0 ? (
               <div>
                 <h1>Gallery</h1>
+                <Gallery cards={cards}/>
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {cards.map((card, index) => (
                     <div key={index} style={containerStyle}>
@@ -82,7 +83,7 @@ function App() {
             <Login setUser={setUser} user={user}/>
           </Route>
           <Route exact path='/usergallery'>
-            {user ? <UserGallery user={user}/> : <h1>To see this content, please log in or sign up</h1>}
+            {user ? <UserGallery setUser={setUser}/> : <h1>To see this content, please log in or sign up</h1>}
           </Route>
         </Switch>
       </div>
