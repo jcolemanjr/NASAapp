@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import UserGallery from './UserGallery';
 import Home from "./Home";
 import Gallery from "./Gallery";
-import Login from "./Login_Logout";
+import LoginLogout from "./LoginLogout";
 
 function App() {
 
@@ -64,7 +64,8 @@ function App() {
             {cards.length > 0 ? (
               <div>
                 <h1>Gallery</h1>
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                <Gallery cards={cards}/>
+                {/* <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {cards.map((card, index) => (
                     <div key={index} style={containerStyle}>
                       <h2 style={titleStyle}>{card.title}</h2>
@@ -72,17 +73,17 @@ function App() {
                       <img src={card.url} alt={card.title} style={imageStyle} />
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
             ) : (
               <h1>Loading...</h1>
             )}
           </Route>
           <Route exact path='/login'>
-            <Login setUser={setUser} user={user}/>
+            <LoginLogout setUser={setUser} user={user}/>
           </Route>
           <Route exact path='/usergallery'>
-            {user ? <UserGallery user={user}/> : <h1>To see this content, please log in or sign up</h1>}
+            {user ? <UserGallery setUser={setUser}/> : <h1>To see this content, please log in or sign up</h1>}
           </Route>
         </Switch>
       </div>
