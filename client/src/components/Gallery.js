@@ -8,9 +8,9 @@ function Gallery({cards}){
 
 
     
-    const filtered = cards.filter( card => {
-    return card.title.toLowerCase().includes(search.toLowerCase())
-    })
+    const filtered = cards.filter( card => (
+     card.title.toLowerCase().includes(search.toLowerCase())
+    ))
     
 
     return (

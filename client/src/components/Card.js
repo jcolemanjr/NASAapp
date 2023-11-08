@@ -42,7 +42,7 @@ function Card({id, title, date, explanation, copyright, media_type, url, hd_url}
                 <p>{media_type}</p>
 
                 
-                <button onClick={handleClick}> <span>Save to Gallery</span></button>
+                <button onClick={handleClick}>Save to Gallery</button>
             </div>
         </div>
     );

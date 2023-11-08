@@ -65,7 +65,7 @@ function App() {
               <div>
                 <h1>Gallery</h1>
                 <Gallery cards={cards}/>
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {/* <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {cards.map((card, index) => (
                     <div key={index} style={containerStyle}>
                       <h2 style={titleStyle}>{card.title}</h2>
@@ -73,7 +73,7 @@ function App() {
                       <img src={card.url} alt={card.title} style={imageStyle} />
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
             ) : (
               <h1>Loading...</h1>
