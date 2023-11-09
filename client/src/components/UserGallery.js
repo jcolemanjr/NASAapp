@@ -34,10 +34,16 @@ function UserGallery({ setUser }) {
       .catch((error) => console.error("Error checking session:", error));
   }, []);
 
-  if (cards.length > 0) {
-    const filteredUserCards = cards.filter((card) => {
-      return card.title.toLowerCase().includes(search.toLowerCase());
-    });
+  if (cards.length >0){
+    const filteredUserCards = cards.filter(card=>{
+        return (
+            card.title?.toLowerCase().includes(search.toLowerCase()) ||
+            card.explanation?.toLowerCase().includes(search.toLowerCase()) ||
+            card.date?.toLowerCase().includes(search.toLowerCase()) ||
+            card.copyright?.toLowerCase().includes(search.toLowerCase()) ||
+            card.media_type?.toLowerCase().includes(search.toLowerCase())
+        )
+    })
 
     function onhandleDelete(id) {
       const deletedcard = filteredUserCards.filter((card) => card.id !== id);
