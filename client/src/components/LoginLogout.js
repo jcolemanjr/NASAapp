@@ -37,7 +37,7 @@ function LoginLogout({ setUser, user }) {
           r.json().then((data) => {
             setUser(data.user);
             // Redirect to the user gallery upon successful login
-            history.push("/Home");
+            history.push("/usergallery");
           });
         } else {
           alert("Invalid username or password");
@@ -48,6 +48,16 @@ function LoginLogout({ setUser, user }) {
         alert("An error occurred. Please try again.");
       });
   };
+
+  function handleDeleteAccount(e){
+    fetch('/delete_account',{ method:'DELETE'})
+    .then((r) => {
+      if (r.ok) {
+        setUser(null);
+        history.push("/")
+      }
+    })
+  }
 
   const login = (
     <div className="form">
@@ -74,6 +84,7 @@ function LoginLogout({ setUser, user }) {
           </div>
         </Form>
       </Formik>
+      <button type="submit"onClick={handleDeleteAccount}>Delete Account</button>
     </div>
   );
 

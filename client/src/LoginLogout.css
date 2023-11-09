@@ -62,3 +62,7 @@
 .login-signup button:hover {
   background-color: #47a44b;
 }
+
+.signup-form{
+  display: none;
+}

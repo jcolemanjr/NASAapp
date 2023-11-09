@@ -3,7 +3,6 @@ import React from "react";
 function UserCard({ id, title, date, explanation, copyright, media_type, url, hd_url, onhandleDelete, onCardClick}){
 
     function handleDelete(e){
-        e.stopPropagation();
         fetch(`/delete_media/${id}`,{
             method: "DELETE",}
         )
