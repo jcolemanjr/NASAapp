@@ -2,10 +2,14 @@
 
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    
+}
+@font-face {
+    font-family: GROUPE MEDIUM;
+    src: url("../public/assets/GroupeMedium-8MXgn.otf");
 }
 
 /* Component-specific styles */
@@ -51,7 +55,6 @@ body {
 h1 {
     text-align: center; /* Center the h1 element */
     color: black; /* Set the text color to black */
-    font-family: 'Roboto', sans-serif; /* Replace with the font of your choice */
     font-size: 50px; /* Adjust the font size as needed */
 }
 

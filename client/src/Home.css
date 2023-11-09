@@ -1,7 +1,6 @@
 h1, h2 {
     text-align: center;
-    font-family: 'Arial', sans-serif;
-    color: #c71717;
+    color: silver;
 }
 
 .imageContainer {
@@ -13,7 +12,14 @@ h1, h2 {
 
 body {
     background-color: black;
+    font-family: GROUPE MEDIUM;
 }
+@font-face {
+    font-family:GROUPE MEDIUM;
+    src: url("../public/assets/GroupeMedium-8MXgn.otf");
+}
+
+
 
 .marquee {
     display: flex;
