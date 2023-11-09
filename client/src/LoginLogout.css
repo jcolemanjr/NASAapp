@@ -1,22 +1,64 @@
-/* LoginLogout.css */
-.logout-button {
-    background-color: #ff8c00; /* Orange background color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding around text */
-    font-size: 16px; /* Font size */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor style on hover */
-    margin-top: 20px; /* Top margin */
-    transition: background-color 0.3s ease; /* Smooth background transition */
-  }
-  
-  .logout-button:hover {
-    background-color: #ff6a00; /* Darker orange on hover */
-  }
-
-  @font-face {
-    font-family: GROUPE MEDIUM;
-    src: url("../public/assets/GroupeMedium-8MXgn.otf");
+.login-signup {
+  text-align: center;
+  color: silver; 
+  margin-top: 2rem;
 }
-  
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  color: silver; 
+}
+
+.input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #4caf50;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.logout-button {
+  background-color: #ff8c00; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  font-size: 16px;
+  border-radius: 5px; 
+  cursor: pointer;
+  margin-top: 20px; 
+  transition: background-color 0.3s ease; 
+}
+
+.logout-button:hover {
+  background-color: #ff6a00; 
+}
+
+.login-signup button {
+  background-color: #4caf50; 
+  color: #fff; 
+  border: none; 
+  padding: 10px 20px; 
+  margin-top: 20px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+}
+
+.login-signup button:hover {
+  background-color: #47a44b;
+}
