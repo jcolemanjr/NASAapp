@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import ChangePassword from './ChangePassword';
@@ -6,6 +7,7 @@ import ChangePassword from './ChangePassword';
 function Signup({setUser,user}){
 
   const[click,setclick] = useState(false)
+  const history = useHistory()
     
     const validationSchema = Yup.object({
         username: Yup.string().required('Name is required'),
@@ -15,14 +17,7 @@ function Signup({setUser,user}){
         .oneOf([Yup.ref('password')], 'Password must match')
       })
 
-      function handleDeleteAccount(e){
-        fetch('/delete_account',{ method:'DELETE'})
-        .then((r) => {
-          if (r.ok) {
-            setUser(null);
-          }
-        })
-      }
+      
 
       function handleClick(e){
         setclick(!click)
@@ -42,7 +37,8 @@ function Signup({setUser,user}){
       })
       .then((r) => {
         if (r.ok) {
-          r.json().then((user) => setUser(user));
+          r.json().then((user) => setUser(user))
+          history.push("/usergallery")
           }
       })
       .catch((error) => {
@@ -51,7 +47,7 @@ function Signup({setUser,user}){
         });
       };
 
-    return (
+    return (<>
     <Formik 
       initialValues={{
         username: '',
@@ -61,7 +57,7 @@ function Signup({setUser,user}){
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      <Form>
+      <Form className={click? "signup-form":"signup-form-not"}>
         <div>
           <label htmlFor="username">User name:</label>
           <Field type="text" id="username" name="username"/>
@@ -82,12 +78,13 @@ function Signup({setUser,user}){
         
         <div>
           <button type="submit">Submit</button>
-          <button onClick={handleDeleteAccount}>Delete Account</button>
-          <button onClick={handleClick}></button>
-          {click? <ChangePassword setUser={setUser}/>: null }
+          
+          
         </div>
       </Form>
     </Formik>
+    <button onClick={handleClick}>{click?"Signup" :"Change Password"}</button>
+    {click? <ChangePassword setUser={setUser}/>: null }</>
     )
 }
 
