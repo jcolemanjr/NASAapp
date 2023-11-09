@@ -27,7 +27,7 @@ function UserCard({ id, title, date, explanation, copyright, media_type, url, hd
     </div>
 
     return (
-        <div>
+        <div className>
         <img src={hd_url} alt={title} />
         {cardInfo}
         </div>

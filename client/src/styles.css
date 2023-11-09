@@ -1,0 +1,92 @@
+/* styles.css */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Component-specific styles */
+.card-container {
+    background-image: url('../public/assets/Jameswebb.png');
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.card, .user_card {
+    width: 500px;
+    max-height: 50%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.80);
+}
+
+.card img, .user_card img {
+    width: 500px;
+    max-height: 50%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card h3, .user_card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.card p, .user_card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+h1 {
+    text-align: center; /* Center the h1 element */
+    color: black; /* Set the text color to black */
+    font-family: 'Roboto', sans-serif; /* Replace with the font of your choice */
+    font-size: 50px; /* Adjust the font size as needed */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: auto;
+}
+
+.label {
+    margin-bottom: 0.5rem;
+}
+
+.input {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.login-signup {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 900px;
+}
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}

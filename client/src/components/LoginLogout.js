@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Signup from "./Singup";
+import '../styles.css';
 
 function LoginLogout({ setUser, user }) {
   const history = useHistory();
@@ -34,7 +35,7 @@ function LoginLogout({ setUser, user }) {
           r.json().then((data) => {
             setUser(data.user);
             // Redirect to the user gallery upon successful login
-            history.push("/Gallery");
+            history.push("/Home");
           });
         } else {
           // Handle the case where login is not successful
