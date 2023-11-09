@@ -1,7 +1,8 @@
 import React from "react";
 
-function Card({id, title, date, explanation, copyright, media_type, url, hd_url}) {
+function Card({id, title, date, explanation, copyright, media_type, url, hd_url, onClick }) {
     function handleClick(e) {
+        e.stopPropagation();
         fetch('/save_media', {
             method: 'POST',
             headers: {
@@ -24,7 +25,7 @@ function Card({id, title, date, explanation, copyright, media_type, url, hd_url}
 
     return (
         <div className="card">
-            <img src={hd_url} alt={title} />
+            <img  onClick={onClick} src={hd_url} alt={title} />
             <div>
                 <h3>{title}</h3>
 
@@ -48,52 +49,3 @@ function Card({id, title, date, explanation, copyright, media_type, url, hd_url}
 }
 
 export default Card;
-
-
-
-
-// import React from "react";
-
-// function Card({id,title, date, explanation, copyright, media_type, url, hd_url}){
-
-//     function handleClick(e){
-//         fetch('/save_media',{
-//             method: "POST",
-//             headers: {
-//               "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify({
-//               id 
-//             }),
-//           })
-//         .then(resp => resp.json())
-//     }
-  
-
-//     const cardInfo = <div>
-//         <h3>Title</h3>
-//         <p>{title}</p>
-
-//         <h3>Date</h3>
-//         <p>{date}</p>
-
-//         <h3>Explanation</h3>
-//         <p>{explanation}</p>
-
-//         <h3>Copyright</h3>
-//         <p>{copyright}</p>
-
-//         <h3>Media Type</h3>
-//         <p>{media_type}</p>
-//         <button onClick={handleClick} >Add to favorite </button>
-//     </div>
-    
-//     return (
-//     <div>
-//         <img src={hd_url} alt={title} />
-//         {cardInfo}
-//     </div>
-//     ) 
-// }
-
-// export default Card

@@ -1,13 +1,20 @@
 import React,{useState} from "react";
 import Search from "./Search";
 import Cards from "./Cards";
+import Interstitial from './Interstitial';
 import '../styles.css';
 
 
 function Gallery({cards}){
 
     const [search,setSearch]=useState('')
+    const [selectedCard, setSelectedCard] = useState(null); // To keep track of the clicked artwork
+    const [showInterstitial, setShowInterstitial] = useState(false); // To show/hide the interstitial
 
+    const handleCardClick = (cardData) => {
+        setSelectedCard(cardData);
+        setShowInterstitial(true); // Show the interstitial when a card is clicked
+    };
 
     
     const filtered = cards.filter( card => (
@@ -23,7 +30,13 @@ function Gallery({cards}){
     return (
     <div>
         <Search setSearch = {setSearch}/>
-        <Cards filteredcard = {filtered}/>
+        <Cards filteredcard = {filtered} onCardClick={handleCardClick}/>
+        {showInterstitial && (
+                <Interstitial 
+                    card={selectedCard} 
+                    onClose={() => setShowInterstitial(false)} // Method to close the interstitial
+                />
+        )}
     </div>
     )
 }
