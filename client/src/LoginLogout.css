@@ -1,0 +1,17 @@
+/* LoginLogout.css */
+.logout-button {
+    background-color: #ff8c00; /* Orange background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding around text */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    margin-top: 20px; /* Top margin */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+  }
+  
+  .logout-button:hover {
+    background-color: #ff6a00; /* Darker orange on hover */
+  }
+  

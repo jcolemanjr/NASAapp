@@ -11,8 +11,13 @@ function Gallery({cards}){
 
     
     const filtered = cards.filter( card => (
-    card.title.toLowerCase().includes(search.toLowerCase())
-    ))
+        //  card.title?.toLowerCase().includes(search.toLowerCase())
+            card.title?.toLowerCase().includes(search.toLowerCase()) ||
+            card.explanation?.toLowerCase().includes(search.toLowerCase()) ||
+            card.date?.toLowerCase().includes(search.toLowerCase()) ||
+            card.copyright?.toLowerCase().includes(search.toLowerCase()) ||
+            card.media_type?.toLowerCase().includes(search.toLowerCase())
+        ))
     
 
     return (
