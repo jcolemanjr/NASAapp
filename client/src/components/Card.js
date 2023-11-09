@@ -26,13 +26,12 @@ function Card({id, title, date, explanation, copyright, media_type, url, hd_url}
         <div className="card">
             <img src={hd_url} alt={title} />
             <div>
-                <h3>Title</h3>
-                <p>{title}</p>
+                <h3>{title}</h3>
 
                 <h3>Date</h3>
                 <p>{date}</p>
 
-                <h3>Explanation</h3>
+                <h3>Explanation:</h3>
                 <p>{explanation}</p>
 
                 <h3>Copyright</h3>

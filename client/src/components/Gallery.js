@@ -1,6 +1,8 @@
 import React,{useState} from "react";
 import Search from "./Search";
 import Cards from "./Cards";
+import '../styles.css';
+
 
 function Gallery({cards}){
 
@@ -9,7 +11,7 @@ function Gallery({cards}){
 
     
     const filtered = cards.filter( card => (
-     card.title.toLowerCase().includes(search.toLowerCase())
+    card.title.toLowerCase().includes(search.toLowerCase())
     ))
     
 
