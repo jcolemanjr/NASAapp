@@ -14,4 +14,9 @@
   .logout-button:hover {
     background-color: #ff6a00; /* Darker orange on hover */
   }
+
+  @font-face {
+    font-family: GROUPE MEDIUM;
+    src: url("../public/assets/GroupeMedium-8MXgn.otf");
+}
   

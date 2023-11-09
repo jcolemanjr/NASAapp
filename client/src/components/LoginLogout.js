@@ -35,7 +35,7 @@ function LoginLogout({ setUser, user }) {
           r.json().then((data) => {
             setUser(data.user);
             // Redirect to the user gallery upon successful login
-            history.push("/Home");
+            history.push("/UserGallery");
           });
         } else {
           // Handle the case where login is not successful
