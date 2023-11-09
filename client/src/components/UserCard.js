@@ -1,8 +1,9 @@
 import React from "react";
 
-function UserCard({ id, title, date, explanation, copyright, media_type, url, hd_url, onhandleDelete}){
+function UserCard({ id, title, date, explanation, copyright, media_type, url, hd_url, onhandleDelete, onCardClick}){
 
     function handleDelete(e){
+        e.stopPropagation();
         fetch(`/delete_media/${id}`,{
             method: "DELETE",}
         )
@@ -26,9 +27,13 @@ function UserCard({ id, title, date, explanation, copyright, media_type, url, hd
         <button onClick={()=>handleDelete(id)} >Delete </button>
     </div>
 
+    const card = { id, title, date, explanation, copyright, media_type, url, hd_url };
+
+
+
     return (
         <div className>
-        <img src={hd_url} alt={title} />
+        <img onClick={() => onCardClick(card)} src={hd_url} alt={title} />
         {cardInfo}
         </div>
     )

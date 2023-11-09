@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import UserCard from "./UserCard";
+import Interstitial from './Interstitial';
 import "../styles.css";
 
 function UserGallery({ setUser }) {
   const [cards, setCards] = useState([]);
   const [search, setSearch] = useState("");
+  const [selectedCard, setSelectedCard] = useState(null); // To keep track of the clicked artwork
+  const [showInterstitial, setShowInterstitial] = useState(false); // To show/hide the interstitial
+
+  const handleCardClick = (cardData) => {
+      setSelectedCard(cardData);
+      setShowInterstitial(true); // Show the interstitial when a card is clicked
+    };
 
   useEffect(() => {
     fetch("/personal_gallery")
@@ -62,6 +70,7 @@ function UserGallery({ setUser }) {
           url={card.url}
           hd_url={card.hd_url}
           onhandleDelete={onhandleDelete}
+          onCardClick={handleCardClick}
         />
       </div>
     ));
@@ -71,6 +80,11 @@ function UserGallery({ setUser }) {
         <div className="search-container">
           <Search setanotherSearch={setSearch} />
         </div>
+        {showInterstitial && (
+                <Interstitial 
+                    card={selectedCard} 
+                    onClose={() => setShowInterstitial(false)} // Method to close the interstitial
+                />)}
         <div className="card-container">{mappedCard}</div>
       </div>
     );
