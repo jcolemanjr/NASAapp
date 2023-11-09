@@ -4,6 +4,17 @@ h1, h2 {
     color: #c71717;
 }
 
+.imageContainer {
+    background-image: url('../public/assets/RhoLunarEclipse_Dascalu_1920.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+body {
+    background-color: black;
+}
+
 .marquee {
     display: flex;
     overflow: hidden;
@@ -35,6 +46,7 @@ h1, h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 5px;
 }
 
 .image-container img {

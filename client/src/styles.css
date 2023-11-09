@@ -11,6 +11,7 @@ body {
 /* Component-specific styles */
 .card-container {
     background-image: url('../public/assets/Jameswebb.png');
+    background-attachment: fixed;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
